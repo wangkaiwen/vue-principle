@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>姓名 <span>{{name}}</span></p>
+        <p>年龄 <span>{{age}}</span></p>
+        <p>出生年 <span>{{birthdayYear}}</span></p>
+        <div>
+            技能 <input type="text" v-if="showSkill" v-model="skill.fly">
+            <p>{{skill.fly}}</p>
+        </div>
+    </div>
+</body>
+<script src="observer.js"></script>
+<script src="watcher.js"></script>
+<script src="compile.js"></script>
+<script src="mvvm.js"></script>
+<script>
+
+    var vm=new MVVM({
+        el:'#app',
+        data(){
+            return {
+                name:'张三',
+                age:20,
+                showSkill:true,
+                skill:{
+                    jump:true,
+                    eat:['apple','orange'],
+                    fly:'1'
+                }
+            }
+        },
+        computed:{
+            birthdayYear(){
+                return 2018-this.age;
+            }
+        }
+    })
+
+    console.log(vm)
+
+</script>
+</html>
